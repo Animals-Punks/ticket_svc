@@ -6,11 +6,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { TypeOrmModuleConfig } from '@config';
 import { HttpExceptionFilter } from '@common/filters/http-exception.filter';
 import { TypeOrmConfigService } from '@shared/services/typeorm/typeorm-config.service';
-import { NftNameMoudle } from '@nftName/nftName.module';
+import { TicketModule } from '@ticket/ticket.module';
 
 @Module({
     imports: [
-        NftNameMoudle,
+        TicketModule,
         TypeOrmModule.forRootAsync({
             imports: [ConfigModule.forFeature(TypeOrmModuleConfig)],
             useClass: TypeOrmConfigService,

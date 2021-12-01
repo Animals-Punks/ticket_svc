@@ -22,7 +22,7 @@
       "@config": ["./src/config"],
       "@common/*": ["./src/common/*"],
       "@shared/*": ["./src/shared/*"],
-      "@nftName/*": ["./src/nftName/*"]
+      "@ticket/*": ["./src/ticket/*"]
     }
   }
 }

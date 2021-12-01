@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 
-import { INftNameService } from '@nftName/domain/interfaces/nftName.interface';
+import { ITicketService } from '@ticket/domain/interfaces/ticket.interface';
 
 @Injectable()
-export class NftNameService implements INftNameService {
+export class TicketService implements ITicketService {
     healthCheck(): string {
         return 'Server is Running 🚀';
     }
