@@ -2,8 +2,8 @@ import { Controller, Get, Inject } from '@nestjs/common';
 
 import { ITicketService } from '@ticket/domain/interfaces/ticket.interface';
 
-@Controller('nftName')
-export class NftNameController {
+@Controller('ticket')
+export class TicketController {
     constructor(
         @Inject('TicketService')
         private readonly ticketService: ITicketService
