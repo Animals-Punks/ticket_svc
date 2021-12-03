@@ -1,3 +1,3 @@
-import { GetTicketInfoQueryHandler } from "./getTicketInfo-query.handler";
+import { GetTicketInfoQueryHandler } from './getTicketInfo-query.handler';
 
-export const QueryHandlers = [GetTicketInfoQueryHandler]
+export const QueryHandlers = [GetTicketInfoQueryHandler];

@@ -8,6 +8,6 @@ export class NotFoundExcption extends HttpException {
 
 export class TicketNotFoundException extends HttpException {
     constructor(message: string) {
-        super(message, HttpStatus.NOT_FOUND)
+        super(message, HttpStatus.NOT_FOUND);
     }
 }

@@ -1,6 +1,6 @@
-"use strict";
+'use strict';
 
-import { IsArray, IsString } from "class-validator";
+import { IsArray, IsString } from 'class-validator';
 
 export class TicketInfo {
     @IsString()

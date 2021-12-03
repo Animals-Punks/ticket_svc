@@ -21,7 +21,7 @@ import { CaverJsModule } from '@shared/modules/caverJs/caverJs.module';
             provide: 'TicketService',
             useClass: TicketService,
         },
-        ...QueryHandlers
+        ...QueryHandlers,
     ],
 })
 export class TicketModule {}

@@ -10,5 +10,7 @@ export interface GetTicketInfoReturn {
 
 export interface ITicketService {
     healthCheck(): string;
-    getTicketInfo(getTicketInfoParmas: GetTicketInfoParmas): Promise<GetTicketInfoReturn>;
+    getTicketInfo(
+        getTicketInfoParmas: GetTicketInfoParmas
+    ): Promise<GetTicketInfoReturn>;
 }

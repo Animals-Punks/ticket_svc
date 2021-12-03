@@ -1,6 +1,6 @@
-"use strict";
+'use strict';
 
-import { IsNotEmpty, IsNumber } from "class-validator";
+import { IsNotEmpty, IsNumber } from 'class-validator';
 
 export class TicketNumberDto {
     @IsNotEmpty()
