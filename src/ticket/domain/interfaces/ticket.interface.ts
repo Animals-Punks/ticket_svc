@@ -8,9 +8,19 @@ export interface GetTicketInfoReturn {
     attributes: any[];
 }
 
+export interface MintTicketParams {
+    ticketType: string;
+    address: string;
+    imageUrl: string;
+    usedAps: any[];
+}
+
 export interface ITicketService {
     healthCheck(): string;
     getTicketInfo(
         getTicketInfoParmas: GetTicketInfoParmas
     ): Promise<GetTicketInfoReturn>;
+    mintTicket(
+        mintTicketParams: MintTicketParams
+    ): Promise<{ minted: boolean }>;
 }

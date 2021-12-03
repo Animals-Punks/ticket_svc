@@ -8,5 +8,4 @@ export class MintedApDto extends AbstractDto {
 
     @IsNumber()
     readonly apNumber: number;
-    readonly ticketNumber: number;
 }

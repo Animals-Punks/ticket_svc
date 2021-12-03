@@ -7,16 +7,13 @@ import { AbstractEntity } from '@common/entity/abstract.entity';
 import { MintedApDto } from '@ticket/domain/dtos/minted_ap.dto';
 
 @Index('minted_ap_pkey', ['id'], { unique: true })
-@Entity('minted_ap')
-export class MintedAp extends AbstractEntity<MintedApDto> {
+@Entity('minted_ap_v1')
+export class MintedApV1 extends AbstractEntity<MintedApDto> {
     @Column('text', { name: 'ticket_type', nullable: false })
     ticketType: string;
 
     @Column('int', { name: 'ap_number', nullable: false, unique: true })
     apNumber: number;
-
-    @Column('int', { name: 'ticket_number', nullable: false, unique: false })
-    ticketNumber: number;
 
     toDto() {
         return plainToClass(MintedApDto, this);

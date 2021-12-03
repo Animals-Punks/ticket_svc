@@ -1,7 +1,10 @@
-import { Controller, Get, Inject, Query } from '@nestjs/common';
+import { Body, Controller, Get, Inject, Post, Query } from '@nestjs/common';
 
 import { ITicketService } from '@ticket/domain/interfaces/ticket.interface';
-import { TicketNumberDto } from '../domain/dtos/ticketNumber.dto';
+import { TicketInfoDto } from '@ticket/domain/dtos/ticketInfo.dto';
+import { TicketNumberDto } from '@ticket/domain/dtos/ticketNumber.dto';
+import { MintInfoDto } from '@ticket/domain/dtos/mintInfo.dto';
+import { MintResultDto } from '@ticket/domain/dtos/mintResult.dto';
 
 @Controller('ticket')
 export class TicketController {
@@ -19,7 +22,19 @@ export class TicketController {
     async ticketInfo(
         @Query()
         ticketNumber: TicketNumberDto
-    ) {
-        return this.ticketService.getTicketInfo({ ...ticketNumber });
+    ): Promise<TicketInfoDto> {
+        const tokenInfo = await this.ticketService.getTicketInfo({
+            ...ticketNumber,
+        });
+        return tokenInfo;
+    }
+
+    @Post('mint')
+    async mintTicket(
+        @Body()
+        mintInfo: MintInfoDto
+    ): Promise<MintResultDto> {
+        const mintResult = await this.ticketService.mintTicket({ ...mintInfo });
+        return mintResult;
     }
 }

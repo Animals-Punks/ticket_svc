@@ -3,6 +3,7 @@ import { ConfigType } from '@nestjs/config';
 import Caver from 'caver-js';
 import { KIP17 } from 'caver-js/types/packages/caver-kct/src/kip17';
 
+import { MintedFailedException } from '@common/errors/http.error';
 import {
     ICaverJsService,
     MintTicketInput,
@@ -117,7 +118,7 @@ export class CaverJsService implements ICaverJsService {
             );
             return true;
         } catch (error) {
-            return false;
+            throw new MintedFailedException(error);
         }
     }
 }
