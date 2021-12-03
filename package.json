@@ -30,6 +30,7 @@
     "@nestjs/platform-express": "^8.0.0",
     "@nestjs/platform-fastify": "^8.1.2",
     "@nestjs/typeorm": "^8.0.2",
+    "caver-js": "^1.6.5",
     "class-transformer": "^0.4.0",
     "class-validator": "^0.13.1",
     "crypto": "^1.0.1",

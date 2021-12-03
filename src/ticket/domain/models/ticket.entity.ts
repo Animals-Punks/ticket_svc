@@ -15,6 +15,9 @@ export class Ticket extends AbstractEntity<TicketDto> {
     @Column('text', { name: 'image_url', unique: false, nullable: false })
     imageUrl: string;
 
+    @Column('text', { name: 'ticket_type', unique: false, nullable: false })
+    ticketType: string;
+
     toDto() {
         return plainToClass(TicketDto, this);
     }

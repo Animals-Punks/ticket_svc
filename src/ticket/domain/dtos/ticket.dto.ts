@@ -4,8 +4,9 @@ import { AbstractDto } from '@common/dto/abstract.dto';
 
 export class TicketDto extends AbstractDto {
     @IsNumber()
-    readonly ticketNumber: number;
+    readonly ticketNumber: string;
 
     @IsString()
     readonly imageUrl: string;
+    readonly ticketType: string;
 }
