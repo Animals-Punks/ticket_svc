@@ -5,3 +5,9 @@ export class NotFoundExcption extends HttpException {
         super(message, HttpStatus.NOT_FOUND);
     }
 }
+
+export class TicketNotFoundException extends HttpException {
+    constructor(message: string) {
+        super(message, HttpStatus.NOT_FOUND);
+    }
+}
