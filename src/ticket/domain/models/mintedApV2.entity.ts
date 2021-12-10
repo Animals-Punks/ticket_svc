@@ -15,6 +15,9 @@ export class MintedApV2 extends AbstractEntity<MintedApDto> {
     @Column('int', { name: 'ap_number', nullable: false, unique: true })
     apNumber: number;
 
+    @Column('uuid', { name: 'ticket_id', nullable: true, unique: false })
+    ticketId: string;
+
     toDto() {
         return plainToClass(MintedApDto, this);
     }

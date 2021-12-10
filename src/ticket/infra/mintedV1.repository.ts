@@ -3,6 +3,7 @@ import { BaseRepository } from 'typeorm-transactional-cls-hooked';
 
 import { MintedApV1 } from '@src/ticket/domain/models/mintedApV1.entity';
 import {
+    GetUsedApInput,
     IMintedApV1Repository,
     SaveUesdApInput,
 } from '../domain/interfaces/repository/mintedV1-repository.interface';
@@ -20,5 +21,14 @@ export class MintedApV1Repository
             console.log(error);
             return false;
         }
+    }
+
+    async getUsedAp(getUsedApInput: GetUsedApInput): Promise<MintedApV1[]> {
+        const usedAp = await this.find({
+            where: {
+                ticketId: getUsedApInput.ticketId,
+            },
+        });
+        return usedAp;
     }
 }

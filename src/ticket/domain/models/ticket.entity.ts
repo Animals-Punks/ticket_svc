@@ -9,7 +9,7 @@ import { TicketDto } from '@ticket/domain/dtos/ticket.dto';
 @Index('ticket_pkey', ['id'], { unique: true })
 @Entity('ticket', { schema: 'Ticket' })
 export class Ticket extends AbstractEntity<TicketDto> {
-    @Column('int', { name: 'ticket_number', unique: true, nullable: false })
+    @Column('int', { name: 'ticket_number', unique: false, nullable: false })
     ticketNumber: number;
 
     @Column('text', { name: 'image_url', unique: false, nullable: false })
