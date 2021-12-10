@@ -7,7 +7,7 @@ import { AbstractEntity } from '@common/entity/abstract.entity';
 import { TicketDto } from '@ticket/domain/dtos/ticket.dto';
 
 @Index('ticket_pkey', ['id'], { unique: true })
-@Entity('ticket', { schema: "Ticket" })
+@Entity('ticket', { schema: 'Ticket' })
 export class Ticket extends AbstractEntity<TicketDto> {
     @Column('int', { name: 'ticket_number', unique: true, nullable: false })
     ticketNumber: number;
