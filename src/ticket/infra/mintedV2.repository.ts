@@ -1,7 +1,7 @@
 import { EntityRepository } from 'typeorm';
 import { BaseRepository } from 'typeorm-transactional-cls-hooked';
 
-import { MintedApV2 } from '@ticket/domain/models/mintedApV2.dto';
+import { MintedApV2 } from '@src/ticket/domain/models/mintedApV2.entity';
 import {
     IMintedApV2Repository,
     SaveUesdApInput,

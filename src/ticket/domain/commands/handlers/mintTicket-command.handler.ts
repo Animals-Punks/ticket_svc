@@ -4,9 +4,9 @@ import { InjectRepository } from '@nestjs/typeorm';
 
 import { MintTicketCommand } from '@ticket/domain/commands/impl/mintTicket.command';
 import { ICaverJsService } from '@shared/interfaces/caverJs/caverJs.interface';
-import { MintedApV1 } from '@ticket/domain/models/mintedApV1.dto';
+import { MintedApV1 } from '@src/ticket/domain/models/mintedApV1.entity';
 import { IMintedApV1Repository } from '@ticket/domain/interfaces/repository/mintedV1-repository.interface';
-import { MintedApV2 } from '@ticket/domain/models/mintedApV2.dto';
+import { MintedApV2 } from '@src/ticket/domain/models/mintedApV2.entity';
 import { IMintedApV2Repository } from '@ticket/domain/interfaces/repository/mintedV2-repository.interface';
 import { NotTicketConditionException } from '@common/errors/http.error';
 
