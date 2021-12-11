@@ -1,13 +1,11 @@
-import { IsNumber, IsString, IsUUID } from 'class-validator';
+import { IsString } from 'class-validator';
 
 import { AbstractDto } from '@common/dto/abstract.dto';
 
-export class MintedApDto extends AbstractDto {
+export class MintedApV1Dto extends AbstractDto {
     @IsString()
     readonly ticketType: string;
-
-    @IsNumber()
-    readonly apNumber: number;
+    readonly apNumber: string;
 
     @IsString()
     readonly ticketId: string;

@@ -1,5 +1,6 @@
 export interface GetTicketInfoParmas {
     ticketNumber: number;
+    ticketType: string;
 }
 
 export interface GetTicketInfoReturn {
@@ -12,6 +13,7 @@ export interface MintTicketParams {
     ticketType: string;
     address: string;
     imageUrl: string;
+    ticketNumber: number;
     usedAps: any[];
 }
 

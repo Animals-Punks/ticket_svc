@@ -12,19 +12,17 @@ import { CaverJsModuleConfig } from '@config';
 
 @Injectable()
 export class CaverJsService implements ICaverJsService {
-    caver: Caver;
-    kip17Instance: KIP17;
-
     constructor(
         @Inject(CaverJsModuleConfig.KEY)
         private readonly _config: ConfigType<typeof CaverJsModuleConfig>
     ) {
-        this.caver = new Caver(_config.endpoint);
-        this.kip17Instance = new this.caver.klay.KIP17(_config.tokenAddress);
+        // this.caver = new Caver(_config.endpoint);
+        // this.kip17Instance = new this.caver.klay.KIP17(_config.tokenAddress);
     }
 
     async getImageUrl(tokenId: number): Promise<string> {
-        const contract = new this.caver.contract(
+        const caver = new Caver(this._config.endpoint);
+        const contract = new caver.contract(
             [
                 {
                     type: 'function',
@@ -53,7 +51,8 @@ export class CaverJsService implements ICaverJsService {
     }
 
     async getMetaData(tokenId: number): Promise<any[]> {
-        const contract = new this.caver.contract(
+        const caver = new Caver(this._config.endpoint);
+        const contract = new caver.contract(
             [
                 {
                     constant: true,
@@ -83,7 +82,8 @@ export class CaverJsService implements ICaverJsService {
     }
 
     async mintTicket(mintTicketInput: MintTicketInput): Promise<boolean> {
-        const contract = new this.caver.contract(
+        const caver = new Caver(this._config.endpoint);
+        const contract = new caver.contract(
             [
                 {
                     constant: false,

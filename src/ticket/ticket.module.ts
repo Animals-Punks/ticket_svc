@@ -8,13 +8,24 @@ import { TicketRepository } from '@ticket/infra/ticket.repository';
 import { QueryHandlers } from '@ticket/domain/queries/handlers';
 import { CommandHandlers } from '@ticket/domain/commands/handlers';
 import { CaverJsModule } from '@shared/modules/caverJs/caverJs.module';
+import { MintedApV1Repository } from '@ticket/infra/mintedV1.repository';
+import { MintedApV2Repository } from '@ticket/infra/mintedV2.repository';
+import { TicketNumberEnumRepository } from '@ticket/infra/ticketNumberEnum.repository';
 
 @Module({
     imports: [
         TicketRepository,
+        MintedApV1Repository,
+        MintedApV2Repository,
+        TicketNumberEnumRepository,
         CaverJsModule,
         CqrsModule,
-        TypeOrmModule.forFeature([TicketRepository]),
+        TypeOrmModule.forFeature([
+            TicketRepository,
+            MintedApV1Repository,
+            MintedApV2Repository,
+            TicketNumberEnumRepository,
+        ]),
     ],
     controllers: [TicketController],
     providers: [

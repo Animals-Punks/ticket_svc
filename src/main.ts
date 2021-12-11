@@ -24,7 +24,7 @@ async function bootstrap() {
     );
 
     try {
-        app.setGlobalPrefix(`${appConfig.apiVersion}`);
+        app.enableCors();
         app.useGlobalPipes(
             new ValidationPipe({ validateCustomDecorators: true })
         );

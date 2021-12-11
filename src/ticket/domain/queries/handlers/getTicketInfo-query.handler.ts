@@ -4,16 +4,16 @@ import { Inject } from '@nestjs/common';
 
 import { GetTicketInfoQuery } from '@ticket/domain/queries/impl/getTicketInfo.query';
 import { ITicketRepository } from '@ticket/domain/interfaces/repository/ticket-repository.interface';
-import { Ticket } from '@ticket/domain/models/ticket.entity';
 import { ICaverJsService } from '@shared/interfaces/caverJs/caverJs.interface';
 import { TicketNotFoundException } from '@common/errors/http.error';
+import { TicketRepository } from '@ticket/infra/ticket.repository';
 
 @QueryHandler(GetTicketInfoQuery)
 export class GetTicketInfoQueryHandler
     implements IQueryHandler<GetTicketInfoQuery>
 {
     constructor(
-        @InjectRepository(Ticket)
+        @InjectRepository(TicketRepository)
         private readonly _ticketRepository: ITicketRepository,
         @Inject('CaverJsService')
         private readonly _caverJsService: ICaverJsService

@@ -3,6 +3,7 @@ import { Ticket } from '@ticket/domain/models/ticket.entity';
 export interface SaveTicketInfoInput {
     ticketNumber: number;
     imageUrl: string;
+    ticketType: string;
 }
 
 export interface ITicketRepository {
