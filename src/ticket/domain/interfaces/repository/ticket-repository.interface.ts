@@ -4,7 +4,6 @@ export interface SaveTicketInfoInput {
     ticketNumber: number;
     imageUrl: string;
     ticketType: string;
-    ticketId: string;
 }
 
 export interface ITicketRepository {

@@ -9,8 +9,10 @@ import { IMintedApV1Repository } from '@ticket/domain/interfaces/repository/mint
 import { IMintedApV2Repository } from '@ticket/domain/interfaces/repository/mintedV2-repository.interface';
 import { MintedApV1Repository } from '@ticket/infra/mintedV1.repository';
 import { MintedApV2Repository } from '@ticket/infra/mintedV2.repository';
-import { TicketRepository } from '@src/ticket/infra/ticket.repository';
-import { ITicketRepository } from '../../interfaces/repository/ticket-repository.interface';
+import { TicketRepository } from '@ticket/infra/ticket.repository';
+import { ITicketRepository } from '@ticket/domain/interfaces/repository/ticket-repository.interface';
+import { TicketNumberEnumRepository } from '@ticket/infra/ticketNumberEnum.repository';
+import { ITicketNumberEnumRepository } from '@ticket/domain/interfaces/repository/ticketNumberEnum-repository.interface';
 
 @CommandHandler(MintTicketCommand)
 export class MintTicketCommandHandler
@@ -22,61 +24,72 @@ export class MintTicketCommandHandler
         @InjectRepository(MintedApV1Repository)
         private readonly _mintedApV1Repository: IMintedApV1Repository,
         @InjectRepository(MintedApV2Repository)
-        private readonly _mintedApV2Repository: IMintedApV2Repository
+        private readonly _mintedApV2Repository: IMintedApV2Repository,
+        @InjectRepository(TicketNumberEnumRepository)
+        private readonly _ticketNumberEnumRepository: ITicketNumberEnumRepository
     ) {}
 
     async execute(mintTicketInfo: MintTicketCommand) {
         const { _mintTicketInfo } = mintTicketInfo;
-        // const property = [{
-        //     trait_type: "V1",
-        //     value: 0,
-        // }, {
-        //     trait_type: "V1",
-        //     value: 1,
-        // }, {
-        //     trait_type: "V2",
-        //     value: 0,
-        // }, {
-        //     trait_type: "V2",
-        //     value: 1
-        // }];
 
-        const ticketId = uuidv4({ random: randomBytes(16) });
+        const ticketNumberInfo =
+            await this._ticketNumberEnumRepository.findOneTicketNumberByType(
+                _mintTicketInfo.ticketType
+            );
+        const ticketNumber = ticketNumberInfo.currentTicketNumber;
+
+        const ticketInfo = await this._ticketRepository.saveTicketInfo({
+            ticketNumber: ticketNumber,
+            imageUrl: _mintTicketInfo.imageUrl,
+            ticketType: _mintTicketInfo.ticketType,
+        });
+
+        const ticketId = ticketInfo.id;
 
         for (const useAp of _mintTicketInfo.usedAps) {
             if (useAp.trait_type === 'V1') {
+                const usedAp =
+                    await this._mintedApV1Repository.getGetApByApNumber({
+                        apNumber: useAp.value,
+                    });
+                if (usedAp) {
+                    throw new NotTicketConditionException('V1 is Used');
+                }
                 this._mintedApV1Repository.saveUsedAp({
                     ticketType: _mintTicketInfo.ticketType,
                     apNumber: useAp.value,
                     ticketId: ticketId,
                 });
             } else if (useAp.trait_type === 'V2') {
+                const usedAp =
+                    await this._mintedApV2Repository.getGetApByApNumber({
+                        apNumber: useAp.value,
+                    });
+                if (usedAp) {
+                    throw new NotTicketConditionException('V2 is Used');
+                }
                 this._mintedApV2Repository.saveUsedAp({
                     ticketType: _mintTicketInfo.ticketType,
                     apNumber: useAp.value,
                     ticketId: ticketId,
                 });
-            } else {
+            } else if (useAp.trait_type === 'type') {} else {
                 throw new NotTicketConditionException(
                     'AP Ticket must be minting with V1 or V2'
                 );
             }
         }
 
-        this._ticketRepository.saveTicketInfo({
-            ticketNumber: _mintTicketInfo.ticketNumber,
-            imageUrl: _mintTicketInfo.imageUrl,
-            ticketType: _mintTicketInfo.ticketType,
-            ticketId: ticketId,
-        });
+        const updateResult =
+            await this._ticketNumberEnumRepository.updateTicketNumberByType({
+                type: _mintTicketInfo.ticketType,
+                ticketNumber : ticketNumber + 1,
+            });
 
-        // const parseProperty = JSON.stringify(_mintTicketInfo.usedAps);
-
-        // const mintResult = await this._caverJsService.mintTicket({
-        //     mintAddress: _mintTicketInfo.address,
-        //     property: parseProperty,
-        //     imageUrl: _mintTicketInfo.imageUrl,
-        // });
-        return { minted: true };
+        if (updateResult === true) {
+            return { minted: true };
+        } else {
+            return { minted: false };
+        }
     }
 }

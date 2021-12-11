@@ -6,6 +6,7 @@ import {
     GetUsedApInput,
     IMintedApV2Repository,
     SaveUesdApInput,
+    GetGetApByApNumberInput,
 } from '@ticket/domain/interfaces/repository/mintedV2-repository.interface';
 
 @EntityRepository(MintedApV2)
@@ -21,6 +22,15 @@ export class MintedApV2Repository
             console.log(error);
             return false;
         }
+    }
+
+    async getGetApByApNumber(getGetApByApNumberInput: GetGetApByApNumberInput): Promise<MintedApV2> {
+        const ap = await this.findOne({
+            where: {
+                apNumber:getGetApByApNumberInput.apNumber
+            }
+        })
+        return ap;
     }
 
     async getUsedAp(getUsedApInput: GetUsedApInput): Promise<MintedApV2[]> {
