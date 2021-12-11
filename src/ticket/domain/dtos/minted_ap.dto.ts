@@ -1,4 +1,4 @@
-import { IsNumber, IsString, IsUUID } from 'class-validator';
+import { IsNumber, IsString } from 'class-validator';
 
 import { AbstractDto } from '@common/dto/abstract.dto';
 

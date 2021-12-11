@@ -1530,10 +1530,10 @@ __metadata:
   linkType: hard
 
 "@nestjs/common@npm:^8.0.0":
-  version: 8.1.2
-  resolution: "@nestjs/common@npm:8.1.2"
+  version: 8.2.3
+  resolution: "@nestjs/common@npm:8.2.3"
   dependencies:
-    axios: 0.23.0
+    axios: 0.24.0
     iterare: 1.2.1
     tslib: 2.3.1
     uuid: 8.3.2
@@ -1550,13 +1550,13 @@ __metadata:
       optional: true
     class-validator:
       optional: true
-  checksum: eaf95af60bdb2399bd0bd1ff4679a98c82a6637dd52c07d612e65639e84a6da29b2c756fc9fa63c6357eaf95c728e27d97c77300f61b8f993d269492315600ad
+  checksum: 2a06ffaf58da0622727621db0b6574cad94f4a0d9b895bb8352f736207c7087fce477185b2cacd3b013b0386860e573b0d27b900783df6885e32fc943d5e87b8
   languageName: node
   linkType: hard
 
 "@nestjs/config@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "@nestjs/config@npm:1.1.0"
+  version: 1.1.5
+  resolution: "@nestjs/config@npm:1.1.5"
   dependencies:
     dotenv: 10.0.0
     dotenv-expand: 5.1.0
@@ -1568,7 +1568,7 @@ __metadata:
     "@nestjs/common": ^7.0.0 || ^8.0.0
     reflect-metadata: ^0.1.13
     rxjs: ^6.0.0 || ^7.2.0
-  checksum: 485c7fdf574f36bdabe80113d7f09d3470e2e9d82f47489ee7c0a3cddd329279d6e80986895a096ef553dd927cc1dfc22386421943c4d209aa6ac4f3361e1f46
+  checksum: ae468f4d7d8d7b8dec30af3413e672aaa77d6f3889a6ceaad5ecf8dbc9771d102b6e5aa126190a98f52bcfa82ed565b1fcf0b58da45e254723ee3d21bdb267eb
   languageName: node
   linkType: hard
 
@@ -3116,12 +3116,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:0.23.0":
-  version: 0.23.0
-  resolution: "axios@npm:0.23.0"
+"axios@npm:0.24.0":
+  version: 0.24.0
+  resolution: "axios@npm:0.24.0"
   dependencies:
     follow-redirects: ^1.14.4
-  checksum: 879f61022bd825da2a7ebb72410bc528683ba54c140436baa0b924b7cab02ec0919fe64a04a546f482a75f5fd570b77884f9826764a95f2fd88265e61dcb70db
+  checksum: 468cf496c08a6aadfb7e699bebdac02851e3043d4e7d282350804ea8900e30d368daa6e3cd4ab83b8ddb5a3b1e17a5a21ada13fc9cebd27b74828f47a4236316
   languageName: node
   linkType: hard
 
@@ -6055,12 +6055,12 @@ __metadata:
   linkType: hard
 
 "follow-redirects@npm:^1.14.4":
-  version: 1.14.5
-  resolution: "follow-redirects@npm:1.14.5"
+  version: 1.14.6
+  resolution: "follow-redirects@npm:1.14.6"
   peerDependenciesMeta:
     debug:
       optional: true
-  checksum: f004a76b2ee3a849772c2816e30928253bf47537b0f00184d89f4966413add96a228a4d96ca8c702bc045a683c52c2ba41545c915cc1a5e33bf8fd9d07b59aee
+  checksum: 7fcdb089a733d2aa39041880790e9f772df009fcd0b243fee7e10acf0e14a8dab5208cf79eb1de35b9cc6033d4dde7f95becadfaa360c50d460b4c730b375e80
   languageName: node
   linkType: hard
 

@@ -35,7 +35,7 @@ export class TicketService implements ITicketService {
     @Transactional()
     async mintTicket(
         mintTicketParams: MintTicketParams
-    ): Promise<{ minted: boolean }> {
+    ): Promise<{ minted: number }> {
         try {
             const mintResult = await this._commandBus.execute(
                 new MintTicketCommand(mintTicketParams)

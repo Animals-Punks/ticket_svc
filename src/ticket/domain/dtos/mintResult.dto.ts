@@ -1,8 +1,8 @@
 'use strict';
 
-import { IsBoolean } from 'class-validator';
+import { IsNumber } from 'class-validator';
 
 export class MintResultDto {
-    @IsBoolean()
-    readonly minted: boolean;
+    @IsNumber()
+    readonly minted: number;
 }

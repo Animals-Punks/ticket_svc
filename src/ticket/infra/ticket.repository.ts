@@ -12,9 +12,15 @@ export class TicketRepository
     extends BaseRepository<Ticket>
     implements ITicketRepository
 {
-    async findOneByTicketNumber(ticketNumber: number): Promise<Ticket> {
+    async findOneByTicketNumber(
+        ticketNumber: number,
+        type: string
+    ): Promise<Ticket> {
         const ticket = await this.findOne({
-            ticketNumber,
+            where: {
+                ticketNumber: ticketNumber,
+                ticketType: type,
+            },
         });
         return ticket;
     }
