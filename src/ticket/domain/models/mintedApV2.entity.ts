@@ -21,7 +21,7 @@ export class MintedApV2 extends AbstractEntity<MintedApDto> {
     toDto() {
         return plainToClass(MintedApDto, this);
     }
-    
+
     public static generateUserId(): string {
         return uuidv4({ random: randomBytes(16) });
     }

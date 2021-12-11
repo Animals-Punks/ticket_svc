@@ -12,7 +12,7 @@ export class TicketNumberEnum extends AbstractEntity<TicketNumberEnumDto> {
     @Column('int', { name: 'current_ticket_number' })
     currentTicketNumber: number;
 
-    @Column('text', {name: "type"})
+    @Column('text', { name: 'type' })
     type: string;
 
     toDto() {

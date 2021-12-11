@@ -1,6 +1,6 @@
-import { IsNotEmpty, IsNumber, IsString } from "class-validator";
+import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
-import { AbstractDto } from "@common/dto/abstract.dto";
+import { AbstractDto } from '@common/dto/abstract.dto';
 
 export class TicketNumberEnumDto extends AbstractDto {
     @IsNotEmpty()

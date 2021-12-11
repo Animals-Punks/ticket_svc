@@ -24,7 +24,7 @@ import { TicketNumberEnumRepository } from '@ticket/infra/ticketNumberEnum.repos
             TicketRepository,
             MintedApV1Repository,
             MintedApV2Repository,
-            TicketNumberEnumRepository
+            TicketNumberEnumRepository,
         ]),
     ],
     controllers: [TicketController],

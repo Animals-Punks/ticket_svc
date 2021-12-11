@@ -16,6 +16,8 @@ export interface GetGetApByApNumberInput {
 
 export interface IMintedApV1Repository {
     saveUsedAp(saveUesdApInput: SaveUesdApInput): Promise<boolean>;
-    getGetApByApNumber(getGetApByApNumberInput: GetGetApByApNumberInput): Promise<MintedApV1>
+    getGetApByApNumber(
+        getGetApByApNumberInput: GetGetApByApNumberInput
+    ): Promise<MintedApV1>;
     getUsedAp(getUsedApInput: GetUsedApInput): Promise<MintedApV1[]>;
 }

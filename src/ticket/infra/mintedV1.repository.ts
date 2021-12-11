@@ -24,12 +24,14 @@ export class MintedApV1Repository
         }
     }
 
-    async getGetApByApNumber(getGetApByApNumberInput: GetGetApByApNumberInput): Promise<MintedApV1> {
+    async getGetApByApNumber(
+        getGetApByApNumberInput: GetGetApByApNumberInput
+    ): Promise<MintedApV1> {
         const ap = await this.findOne({
             where: {
-                apNumber:getGetApByApNumberInput.apNumber
-            }
-        })
+                apNumber: getGetApByApNumberInput.apNumber,
+            },
+        });
         return ap;
     }
 

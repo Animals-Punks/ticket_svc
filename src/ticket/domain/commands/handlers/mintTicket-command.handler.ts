@@ -73,7 +73,8 @@ export class MintTicketCommandHandler
                     apNumber: useAp.value,
                     ticketId: ticketId,
                 });
-            } else if (useAp.trait_type === 'type') {} else {
+            } else if (useAp.trait_type === 'type') {
+            } else {
                 throw new NotTicketConditionException(
                     'AP Ticket must be minting with V1 or V2'
                 );
@@ -83,7 +84,7 @@ export class MintTicketCommandHandler
         const updateResult =
             await this._ticketNumberEnumRepository.updateTicketNumberByType({
                 type: _mintTicketInfo.ticketType,
-                ticketNumber : ticketNumber + 1,
+                ticketNumber: ticketNumber + 1,
             });
 
         if (updateResult === true) {
