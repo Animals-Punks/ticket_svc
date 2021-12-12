@@ -5,7 +5,7 @@ import { TicketInfoDto } from '@ticket/domain/dtos/ticketInfo.dto';
 import { MintInfoDto } from '@ticket/domain/dtos/mintInfo.dto';
 import { MintResultDto } from '@ticket/domain/dtos/mintResult.dto';
 
-@Controller('ticket')
+@Controller()
 export class TicketController {
     constructor(
         @Inject('TicketService')
@@ -17,7 +17,7 @@ export class TicketController {
         return this.ticketService.healthCheck();
     }
 
-    @Get('info/:ticketType/:number')
+    @Get('ticket/info/:ticketType/:number')
     async ticketInfo(
         @Param('ticketType')
         ticketType: string,
@@ -31,7 +31,7 @@ export class TicketController {
         return tokenInfo;
     }
 
-    @Post('mint')
+    @Post('ticket/mint')
     async mintTicket(
         @Body()
         mintInfo: MintInfoDto
