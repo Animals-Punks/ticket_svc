@@ -7,6 +7,6 @@ export interface SaveTicketInfoInput {
 }
 
 export interface ITicketRepository {
-    findOneByTicketNumber(ticketNumber: number): Promise<Ticket>;
+    findOneByTicketNumber(ticketNumber: number, type: string): Promise<Ticket>;
     saveTicketInfo(saveTicketInfoInput: SaveTicketInfoInput): Promise<Ticket>;
 }

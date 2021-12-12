@@ -1,8 +1,7 @@
-import { Body, Controller, Get, Inject, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Inject, Param, Post } from '@nestjs/common';
 
 import { ITicketService } from '@ticket/domain/interfaces/ticket.interface';
 import { TicketInfoDto } from '@ticket/domain/dtos/ticketInfo.dto';
-import { TicketNumberDto } from '@ticket/domain/dtos/ticketNumber.dto';
 import { MintInfoDto } from '@ticket/domain/dtos/mintInfo.dto';
 import { MintResultDto } from '@ticket/domain/dtos/mintResult.dto';
 
@@ -18,13 +17,16 @@ export class TicketController {
         return this.ticketService.healthCheck();
     }
 
-    @Get('info')
+    @Get('info/:ticketType/:number')
     async ticketInfo(
-        @Query()
-        ticketNumber: TicketNumberDto
+        @Param('ticketType')
+        ticketType: string,
+        @Param('number')
+        ticketNumber: number
     ): Promise<TicketInfoDto> {
         const tokenInfo = await this.ticketService.getTicketInfo({
-            ...ticketNumber,
+            ticketType,
+            ticketNumber,
         });
         return tokenInfo;
     }

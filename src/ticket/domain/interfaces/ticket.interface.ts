@@ -22,7 +22,5 @@ export interface ITicketService {
     getTicketInfo(
         getTicketInfoParmas: GetTicketInfoParmas
     ): Promise<GetTicketInfoReturn>;
-    mintTicket(
-        mintTicketParams: MintTicketParams
-    ): Promise<{ minted: boolean }>;
+    mintTicket(mintTicketParams: MintTicketParams): Promise<{ minted: number }>;
 }

@@ -1,7 +1,5 @@
 import { ICommandHandler, CommandHandler } from '@nestjs/cqrs';
 import { InjectRepository } from '@nestjs/typeorm';
-import { v4 as uuidv4 } from 'uuid';
-import { randomBytes } from 'crypto';
 
 import { NotTicketConditionException } from '@common/errors/http.error';
 import { MintTicketCommand } from '@ticket/domain/commands/impl/mintTicket.command';
@@ -88,9 +86,9 @@ export class MintTicketCommandHandler
             });
 
         if (updateResult === true) {
-            return { minted: true };
+            return { minted: ticketNumber };
         } else {
-            return { minted: false };
+            return { minted: ticketNumber };
         }
     }
 }

@@ -38,7 +38,7 @@ export class TicketNumberEnumRepository
                 currentTicketNumber: updateTicketNumberByTypeInput.ticketNumber,
             };
 
-            const updateResult = await this.save({
+            await this.save({
                 ...updateTicketNumberEnumData,
             });
 
