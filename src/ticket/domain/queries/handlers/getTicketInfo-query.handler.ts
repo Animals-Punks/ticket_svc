@@ -57,7 +57,7 @@ export class GetTicketInfoQueryHandler
             }
             let ticketNameType = 'Gold';
             let imageUrl =
-                'https://www.arabnews.com/sites/default/files/main-image/2021/10/12/2856941-1975758329.jpg';
+                'https://gateway.pinata.cloud/ipfs/QmYEN1hKDkaJ5t4L8PGcHdoBvtTEVUnYhmCcFqct8Y6jns/gold.gif';
             const ticketTypeProperty = {
                 trait_type: 'type',
                 value: 'gold',
@@ -71,7 +71,7 @@ export class GetTicketInfoQueryHandler
                 };
                 property.push(diamondTicketTypeProperty);
                 imageUrl =
-                    'https://m.media-amazon.com/images/I/615HMgt2EoL._UY625_.jpg';
+                    'https://gateway.pinata.cloud/ipfs/QmYEN1hKDkaJ5t4L8PGcHdoBvtTEVUnYhmCcFqct8Y6jns/diamond.gif';
             }
             const result = {
                 name: `Zoo Ticket ${ticketNameType} #${ticketId}`,
